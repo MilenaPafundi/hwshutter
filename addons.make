@@ -1,2 +1,2 @@
-ofxOMXCamera
+ofxRPiCameraVideoGrabber
 ofxThermalPrinter

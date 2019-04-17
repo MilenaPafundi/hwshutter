@@ -3,65 +3,62 @@
 #include "ofMain.h"
 #include "ofAppEGLWindow.h"
 #include "TerminalListener.h"
-#include "ofxOMXVideoGrabber.h"
+#include "ofxRPiCameraVideoGrabber.h"
 #include "ImageFilterCollection.h"
 #include "ofxThermalPrinter.h"
 
+//class ofApp : public ofBaseApp{
 class ofApp : public ofBaseApp, public KeyListener{
 
-	public:
+ public:
 
-		void setup();
-		void update();
-		void draw();
-		void keyPressed(int key);
-
-	void onCharacterReceived(KeyListenerEventData& e);
-	TerminalListener consoleListener;
-	ofxOMXVideoGrabber videoGrabber;
-	ofxThermalPrinter printer;
-	
-	ImageFilterCollection filterCollection;
-	
-	bool doDrawInfo;
-	
-	ofFbo fbo;
-	ofShader shader;
-	bool doShader;
-		
-	ofxOMXCameraSettings settings;
-
-	string clientTyping;
-	ofTrueTypeFont font;
-	string text;
-	ofRectangle rect;
-	ofImage img;
-	bool snapShot;
-
-	string wrapString(string text, int width) {
-	  
-	  string typeWrapped = "";
-	  string tempString = "";
-		  vector <string> words = ofSplitString(text, " ");
+  void setup();
+  void update();
+  void draw();
+  void keyPressed(int key);
+  
+  	void onCharacterReceived(KeyListenerEventData& e);
+  //TerminalListener consoleListener;
+  ofxRPiCameraVideoGrabber videoGrabber;
+  ofxThermalPrinter printer;
+  	
+  ofFbo fbo;
+  ofShader shader;
+  bool doShader;
+  
+  string clientTyping;
+  string text;
+  ofTrueTypeFont font;
+  ofRectangle rect;
+  ofImage img;
+  bool snapShot;
+  
+  OMXCameraSettings omxCameraSettings;
+  
+  string wrapString(string text, int width) {
+    
+    string typeWrapped = "";
+    string tempString = "";
+    vector <string> words = ofSplitString(text, " ");
 		  
-		  for(int i=0; i<words.size(); i++) {
+    for(int i=0; i<words.size(); i++) {
+      
+      string wrd = words[i];
+      cout << wrd << endl;
 		    
-		    string wrd = words[i];
-		    cout << wrd << endl;
-		    
-		    tempString += wrd + " ";
-		    int stringwidth = font.stringWidth(tempString);
-		    if(stringwidth >= width) {
-		      tempString = "";
-		      typeWrapped += "\n";
-		    }
-		    
-		    typeWrapped += wrd + " ";
-		  }
-		  
-		  return typeWrapped;
-		  
-	}
+      tempString += wrd + " ";
+      int stringwidth = font.stringWidth(tempString);
+      if(stringwidth >= width) {
+	tempString = "";
+	typeWrapped += "\n";
+      }
+      
+      typeWrapped += wrd + " ";
+    }
+    
+    return typeWrapped;
+    
+  }
 
 };
 

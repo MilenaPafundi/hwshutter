@@ -52,14 +52,14 @@ void main()
     mediump float newTime = time * 2.0;
 
     vec2 newTexCoord;
-    newTexCoord.s = texcoord0.s + (cos(newTime + (texcoord0.s*20.0)) * 0.05);
-    newTexCoord.t = texcoord0.t + (sin(newTime + (texcoord0.t*20.0)) * 0.05);
+    newTexCoord.s = texcoord0.s + (cos(newTime + (texcoord0.s*20.0)) * 0.01);
+    newTexCoord.t = texcoord0.t + (sin(newTime + (texcoord0.t*20.0)) * 0.01);
 
     mediump vec2 texCoordRed    = newTexCoord;
     mediump vec2 texCoordGreen  = newTexCoord;
     mediump vec2 texCoordBlue   = newTexCoord;
 
-    texCoordRed     += vec2( cos((newTime * 2.76)), sin((newTime * 2.12)) )* 0.01;// esto modificamos
+    texCoordRed     += vec2( cos((newTime * 2.76)), sin((newTime * 2.12)) )* 0.01;
     texCoordGreen   += vec2( cos((newTime * 2.23)), sin((newTime * 2.40)) )* 0.01;
     texCoordBlue    += vec2( cos((newTime * 2.98)), sin((newTime * 2.82)) )* 0.01;  
 
