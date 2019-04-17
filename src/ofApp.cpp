@@ -31,9 +31,11 @@ void ofApp::setup()
 	snapShot = false;
 	clientTyping = "hola hola esta es una prueba con texto más grande ";
 
+	gpio18.setup("17");
+	gpio18.export_gpio();
+	gpio18.setdir_gpio("in");
+	imprime = 0;
 	
-	
-		
 }	
 
 //--------------------------------------------------------------
@@ -52,7 +54,17 @@ void ofApp::update()
   videoGrabber.draw();
   shader.end();
   fbo.end();
-	
+
+  gpio18.getval_gpio(imprime);
+  
+  if(imprime == 1){
+    snapShot = true;
+    img.resize(400, 225);
+    printer.print(img, 127);
+    printer.println(" ");
+    printer.println(" ");
+  }
+
 }
 
 

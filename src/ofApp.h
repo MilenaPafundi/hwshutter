@@ -6,6 +6,7 @@
 #include "ofxRPiCameraVideoGrabber.h"
 #include "ImageFilterCollection.h"
 #include "ofxThermalPrinter.h"
+#include "ofxGPIO.h"
 
 //class ofApp : public ofBaseApp{
 class ofApp : public ofBaseApp, public KeyListener{
@@ -21,10 +22,13 @@ class ofApp : public ofBaseApp, public KeyListener{
   TerminalListener consoleListener;
   ofxRPiCameraVideoGrabber videoGrabber;
   ofxThermalPrinter printer;
+  GPIO gpio18;
   	
   ofFbo fbo;
   ofShader shader;
   bool doShader;
+  int imprime;
+  int salta;
   
   string clientTyping;
   string text;

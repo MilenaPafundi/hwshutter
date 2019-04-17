@@ -1,2 +1,3 @@
 ofxRPiCameraVideoGrabber
 ofxThermalPrinter
+ofxGPIO
