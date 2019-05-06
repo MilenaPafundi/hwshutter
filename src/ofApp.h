@@ -17,6 +17,8 @@ class ofApp : public ofBaseApp, public KeyListener{
   void update();
   void draw();
   void keyPressed(int key);
+  void setBrightness(ofImage &image, const int brightness);
+  void setContrast(ofImage &image, const int contrast);
   
   void onCharacterReceived(KeyListenerEventData& e);
   TerminalListener consoleListener;
@@ -35,6 +37,7 @@ class ofApp : public ofBaseApp, public KeyListener{
   ofTrueTypeFont font;
   ofRectangle rect;
   ofImage img;
+  ofImage img2; 
   bool snapShot;
   
   OMXCameraSettings omxCameraSettings;
