@@ -25,6 +25,7 @@ class ofApp : public ofBaseApp, public KeyListener{
   ofxRPiCameraVideoGrabber videoGrabber;
   ofxThermalPrinter printer;
   GPIO gpio18;
+  std::vector < std::string > frases;
   	
   ofFbo fbo;
   ofShader shader;
@@ -39,6 +40,7 @@ class ofApp : public ofBaseApp, public KeyListener{
   ofImage img;
   ofImage img2; 
   bool snapShot;
+  ofBuffer buffer;
   
   OMXCameraSettings omxCameraSettings;
   

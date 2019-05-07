@@ -8,7 +8,9 @@ void ofApp::setup()
 	ofSetVerticalSync(false);
 	ofEnableAlphaBlending();
 	printer.open("/dev/serial0");
-
+	buffer = ofBufferFromFile("txt/texto.txt"); // reading into the buffer
+	frases = ofSplitString(buffer.getText(), ",");
+	
 	consoleListener.setup(this);
 		
 	omxCameraSettings.width = 1024;
@@ -35,6 +37,14 @@ void ofApp::setup()
 	gpio18.export_gpio();
 	gpio18.setdir_gpio("in");
 	imprime = 0;
+
+	    ofSleepMillis(1000);	
+
+	printer.println(" ");
+	printer.println(" ");
+	printer.println("-------READY------");
+	printer.println(" ");
+	printer.println(" ");
 	
 }	
 
@@ -60,15 +70,8 @@ void ofApp::update()
   if(imprime == 1){
     
     snapShot = true;
-    ofSleepMillis(4000);
-    printer.println("HABRá PLENA IGUALDAD DE GÉNERO CUANDO SE REIVINDIQUEN A CABALIDAD LOS DERECHOS DE LAS MUJERES, PERO HOY TIENE QUE HABER UNA NUEVA MASCULINIDAD");
-    printer.println(" ");
-    printer.print(img, 127);
-    ofSleepMillis(14000);
-    printer.println(" ");
-    printer.println(" ");
-    printer.println(" ");
-    printer.println("14 segundos después");
+//    ofSleepMillis(4000);
+
   }
   
 }
@@ -99,19 +102,30 @@ void ofApp::draw(){
   //ofsetColor(255); 
   
   if (snapShot == true){
-	 
+    int random;
+    random = ofRandom(6); 
     img.grabScreen(0,0, ofGetWidth(),ofGetHeight());
 	  
     string fileName = "imagen.jpg";
     //    img.save(fileName, OF_IMAGE_QUALITY_BEST);
     img.setImageType(OF_IMAGE_GRAYSCALE);   // now I am grayscale;
     img.resize(400, 400);
-    snapShot = false;
+    //snapShot = false;
     //    img2.load("imagen.jpg");
-    setBrightness(img, 40.0f);
+    setBrightness(img, 60.0f);
     setContrast(img, 120.0f);
     img.save(fileName, OF_IMAGE_QUALITY_BEST);
-
+    printer.println(frases[random]);
+    printer.println(" ");
+    printer.print(img, 127);
+    ofSleepMillis(12000);
+    printer.println(" ");
+    printer.println(" ");
+    printer.println(" ");
+    printer.println("--------------------------------");
+    printer.println(" ");
+    printer.println(" ");
+    snapShot = false;
   }
 
   img.draw(0, 0);
