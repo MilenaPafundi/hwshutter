@@ -9,7 +9,7 @@ void ofApp::setup()
 	ofEnableAlphaBlending();
 	printer.open("/dev/serial0");
 	buffer = ofBufferFromFile("txt/texto.txt"); // reading into the buffer
-	frases = ofSplitString(buffer.getText(), ",");
+	frases = ofSplitString(buffer.getText(), "-");
 	
 	consoleListener.setup(this);
 		
@@ -110,19 +110,29 @@ void ofApp::draw(){
     //    img.save(fileName, OF_IMAGE_QUALITY_BEST);
     img.setImageType(OF_IMAGE_GRAYSCALE);   // now I am grayscale;
     img.resize(400, 400);
+    img.rotate90(2);
     //snapShot = false;
     //    img2.load("imagen.jpg");
     setBrightness(img, 60.0f);
     setContrast(img, 120.0f);
     img.save(fileName, OF_IMAGE_QUALITY_BEST);
+    printer.setUpDown(true);
+//    printer.setReverse(true);
     printer.println(frases[random]);
+//    printer.println("\x23"+"Tercer Pa"+"\xA1"+"s, la frontera"+"\x23"+" Gloria Anzald"+"\xA3"+"a");
+    string hola;
+//    hola = "\x22No volver\x82 a ser avergonzada ni me avergonzar\x82 de m\xA1 misma\x22 Gloria Anzald\xA3\x61";
+    hola = "adaznogreva";
+    printer.println(hola);
     printer.println(" ");
-    printer.print(img, 127);
+//    printer.print(img, 127);
     ofSleepMillis(12000);
     printer.println(" ");
     printer.println(" ");
     printer.println(" ");
-    printer.println("--------------------------------");
+//    printer.println("--------------------------------");
+    printer.println(" ");
+    printer.println(" ");
     printer.println(" ");
     printer.println(" ");
     snapShot = false;
@@ -144,7 +154,7 @@ void ofApp::keyPressed  (int key)
     //img.resize(400, 400);
     printer.println("HABRá PLENA IGUALDAD DE GÉNERO CUANDO SE REIVINDIQUEN A CABALIDAD LOS DERECHOS DE LAS MUJERES, PERO HOY TIENE QUE HABER UNA NUEVA MASCULINIDAD");
     printer.println(" ");
-    printer.print(img, 127);
+//    printer.print(img, 127);
     ofSleepMillis(14000);
     printer.println(" ");
     printer.println(" ");
