@@ -37,8 +37,8 @@ void ofApp::setup()
 	gpio18.export_gpio();
 	gpio18.setdir_gpio("in");
 	imprime = 0;
-	
-}	
+
+}
 
 //--------------------------------------------------------------
 void ofApp::update()
@@ -94,10 +94,8 @@ void ofApp::draw(){
   //ofsetColor(255); 
   
   if (snapShot == true){
-    
     int random;
-    random = ofRandom(frases.size()); 
-
+    random = ofRandom(6); 
     img.grabScreen(0,0, ofGetWidth(),ofGetHeight());
 	  
     string fileName = "imagen.jpg";
@@ -112,51 +110,22 @@ void ofApp::draw(){
     img.save(fileName, OF_IMAGE_QUALITY_BEST);
     printer.setUpDown(true);
 //    printer.setReverse(true);
-
-    string fraseAleatoria; 
-    fraseAleatoria = frases[random];
-    std::vector < std::string > textAnalisis = ofSplitString(fraseAleatoria, "#");
-    std::reverse(textAnalisis.begin(), textAnalisis.end());
-    for(int i = 0; i < textAnalisis.size(); i++){
-      //for(size_t i = textAnalisis.size(); i--; ){
-      //    ofStringReplace(textAnalisis[i], "\"", "\x22");
-      //    ofStringReplace(textAnalisis[i], "Anzaldúa", "Anzaldaaa");
-    ofStringReplace(textAnalisis[i], "á", "\xA0");
-    ofStringReplace(textAnalisis[i], "é", "\x82");
-    ofStringReplace(textAnalisis[i], "í", "\xA1");
-    ofStringReplace(textAnalisis[i], "ó", "\xA2");
-    ofStringReplace(textAnalisis[i], "ú", "\xA3");
-    ofStringReplace(textAnalisis[i], "à", "\x85");
-    //ofStringReplace(textAnalisis[i], "\61", "a");
-//    ofStringReplace(textAnalisis[i], "u", "\x75");
-    ofStringReplace(textAnalisis[i], "ñ", "\xA4");
-    ofStringReplace(textAnalisis[i], "¿", "\xA8");
-    printer.print(textAnalisis[i]);
-    //ofSleepMillis(500);
-    }
-    //printer.println(frases[random]);
+    printer.println(frases[random]);
 //    printer.println("\x23"+"Tercer Pa"+"\xA1"+"s, la frontera"+"\x23"+" Gloria Anzald"+"\xA3"+"a");
-//    string hola1;
-//    string hola2; 
-//    string hola3;
-//    hola1 = "\x22No volver\x82 a ser avergonzada ni";
-//    hola2 = "me avergonzar\x82 de m\xA1 misma\x22";
-//    hola3 = "Gloria Anzald\xA3\x61";
-//    hola = "\x22No volver\x82 a ser avergonzada ni me avergonzar\x82 de m\xA1 misma\x22 Gloria Anzald\xA3\x61";
-    //hola = "adaznogreva";
-//    printer.println(hola3);
-//    printer.println(hola2);
-//    printer.println(hola1);
-//    printer.println(" ");
+    string hola;
+    hola = "\x22No volver\x82 a ser avergonzada ni me avergonzar\x82 de m\xA1 misma\x22 Gloria Anzald\xA3\x61";
+    hola = "adaznogreva";
+    printer.println(hola);
+    printer.println(" ");
 //    printer.print(img, 127);
-    ofSleepMillis(1000);
-//    printer.println(" ");
-//    printer.println(" ");
-//    printer.println(" ");
+    ofSleepMillis(12000);
+    printer.println(" ");
+    printer.println(" ");
+    printer.println(" ");
 //    printer.println("--------------------------------");
-//    printer.println(" ");
-//    printer.println(" ");
-//    printer.println(" ");
+    printer.println(" ");
+    printer.println(" ");
+    printer.println(" ");
     printer.println(" ");
     snapShot = false;
   }

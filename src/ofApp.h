@@ -7,6 +7,7 @@
 #include "ImageFilterCollection.h"
 #include "ofxThermalPrinter.h"
 #include "ofxGPIO.h"
+#include <algorithm>
 
 //class ofApp : public ofBaseApp{
 class ofApp : public ofBaseApp, public KeyListener{
